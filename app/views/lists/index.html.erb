@@ -1,5 +1,12 @@
-<h1>hello index</h1>
-<p><%= link_to "Add a new List", new_list_path %></p>
+<button type="button" class="btn btn-dark mb-2"><%= link_to "＋ List", new_list_path %></button>
+
+<div class="card" style="width: 18rem;">
+<div class="card-header">
+  Our Lists
+</div>
+<ul class="list-group list-group-flush">
 <% @lists.each do |list| %>
-  <%= link_to list.name, list_path(list) %>
+  <li class="list-group-item"><%= link_to list.name, list_path(list) %></li>
 <% end %>
+  </ul>
+</div>

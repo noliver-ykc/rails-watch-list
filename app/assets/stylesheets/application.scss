@@ -10,3 +10,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+a {
+  color:rgb(106, 113, 205);
+  text-decoration: none;
+  &:hover {
+    opacity: 70%;
+  }
+}
