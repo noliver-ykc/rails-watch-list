@@ -19,7 +19,7 @@ response['results'].each do |movie_hash|
   puts
   p movie_hash
   # create an instance with the hash
-  if movie_hash['original_language'] == 'en' && movie_hash['genre_ids'][0] == 16
+  if movie_hash['original_language'] == 'en'
     Movie.create!(
       title: movie_hash['original_title'],
       overview: movie_hash['overview'],
