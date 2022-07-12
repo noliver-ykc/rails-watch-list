@@ -10,3 +10,15 @@
 <% end %>
   </ul>
 </div>
+
+<div class="card">
+  <% @lists.each do |list| %>
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to list.name, list_path(list) %></h5>
+      <p class="card-text"><%= list.desciption %> </p>
+    </div>
+  <% end %>
+  <% @article.photos.each do |photo| %>
+    <img class="card-img-bottom" src="<%= cl_image_tag photo.key %>" alt="Card image cap">
+  <% end %>
+</div>
