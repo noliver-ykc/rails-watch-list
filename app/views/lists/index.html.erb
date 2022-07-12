@@ -1,24 +1,16 @@
 <button type="button" class="btn btn-dark mb-2"><%= link_to "＋ List", new_list_path %></button>
-
-<div class="card" style="width: 18rem;">
-<div class="card-header">
-  Our Lists
-</div>
-<ul class="list-group list-group-flush">
-<% @lists.each do |list| %>
-  <li class="list-group-item"><%= link_to list.name, list_path(list) %></li>
-<% end %>
-  </ul>
-</div>
-
-<div class="card">
+<div class="grid">
   <% @lists.each do |list| %>
-    <div class="card-body">
-      <h5 class="card-title"><%= link_to list.name, list_path(list) %></h5>
-      <p class="card-text"><%= list.desciption %> </p>
+    <div class="card bg-dark card-sizer">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to list.name, list_path(list) %></h5>
+        <p class="card-text"><%= list.description %> </p>
+      </div>
+      <% if list.photo.key  %>
+        <%= cl_image_tag list.photo.key, class: "card-img-bottom", alt:"card image", width: 400, height: 215 %>
+      <% else %>
+        <img class="card-img-bottom list-img" src="https://source.unsplash.com/random" alt="Card image cap">
+      <% end %>
     </div>
-  <% end %>
-  <% @article.photos.each do |photo| %>
-    <img class="card-img-bottom" src="<%= cl_image_tag photo.key %>" alt="Card image cap">
   <% end %>
 </div>

@@ -11,10 +11,61 @@
 @import "components/index";
 @import "pages/index";
 
+.main-border {
+  margin: 50px;
+}
+
 a {
   color:rgb(106, 113, 205);
   text-decoration: none;
   &:hover {
     opacity: 70%;
+  }
+}
+
+p {
+  color: white;
+}
+
+.card-sizer {
+  height: 350px;
+  width: 250px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+@media only screen and (max-width: 832px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .main-border {
+    margin: 15px;
+  }
+  .card-sizer {
+    height: 200px;
+    width: 150px;
+    object-fit: cover;
+    overflow: hidden;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
