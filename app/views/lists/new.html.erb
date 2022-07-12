@@ -3,6 +3,7 @@
 <%= simple_form_for [@list] do |f| %>
   <%= f.input :name %>
   <%= f.submit %>
+  <%= f.input :photo, as: :file %>
 <% end %>
 
 <button type="button" class="mt-2 btn btn-dark"><%= link_to "←", lists_path %></button>
