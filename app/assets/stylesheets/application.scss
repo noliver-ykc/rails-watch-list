@@ -15,12 +15,18 @@
 
 body {
   background-color: rgb(19, 19, 28);
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif!important;
   font-weight: 200;
 }
 
+.center-container {
+  width: 75%;
+  margin: 0px 10em 0px 10em;
+  background-color: white;
+}
+
 .main-border {
-  margin: 50px;
+  margin: 50px 150px;
 }
 
 h1 {

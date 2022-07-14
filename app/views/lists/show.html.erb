@@ -3,6 +3,7 @@
   <button type="button" class="btn btn-dark"><%= link_to "＋ Bookmark", new_list_bookmark_path(@list) %></button>
 </div>
 <h1><%= @list.name %></h1>
+
 <div class="other-movies">
   <% @list.bookmarks.each do |bookmark| %>
     <img class="mini-poster" src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>">
