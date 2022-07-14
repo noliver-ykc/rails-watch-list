@@ -1,19 +1,51 @@
-<button type="button" class="mt-2 btn btn-dark"><%= link_to "←", lists_path %></button>
+<div class="show-buttons">
+  <button type="button" class="btn btn-dark"><%= link_to "←", lists_path %></button>
+  <button type="button" class="btn btn-dark"><%= link_to "＋ Bookmark", new_list_bookmark_path(@list) %></button>
+</div>
 <h1><%= @list.name %></h1>
+<div class="other-movies">
+  <% @list.bookmarks.each do |bookmark| %>
+    <img class="mini-poster" src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>">
+  <% end %>
+</div>
+
 <% @list.bookmarks.each do |bookmark| %>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="<%= bookmark.movie.poster_url %>" class="img-fluid rounded-start" alt="...">
+  <% hrs = rand(1...3) %>
+  <% mins = rand(45...60) %>
+  <div class="display-container">
+    <div class="movie-visuals">
+      <div class="poster"><img class="poster-img" src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>"></div>
+      <div class="side-widgets"></div>
+      <div id="genre" class="mini-info">
+        <i class="fa-solid fa-video"></i>
+        <p class="p-norm">Genre</p>
+        <p class="p-bold"><%= bookmark.movie.genre %></p>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"><%= bookmark.movie.title %></h5>
-          <p class="card-text"><%= bookmark.comment %></p>
-          <%= link_to "🗑", bookmark_path(bookmark.id), method: :delete, data: { confirm: "Are you sure?" } %>
-        </div>
+      <div id ="duration" class="mini-info">
+        <i class="fa-solid fa-clock"></i>
+        <p class="p-norm">Duration</p>
+        <p class="p-bold"><%= hrs %>hr<%= mins %>m</p>
+      </div>
+      <div id="rating" class="mini-info">
+        <i class="fa-solid fa-star"></i>
+        <p class="p-norm">Rating</p>
+        <p class="p-bold"><%= bookmark.movie.rating %>/10</p>
       </div>
     </div>
+    <div class="movie-text mt-5">
+      <h1><%= bookmark.movie.title %></h1>
+        <hr>
+        <h2>Movie Synopsis</h2>
+        <p class="p-norm"><%= bookmark.movie.overview %></p>
+        <hr>
+        <h2>User Comments</h2>
+        <p class="p-norm"><%= bookmark.comment%></p>
+        <p class="p-norm"><i id="likes" class="fa-solid fa-heart"></i> <span id="counter">5</span> anonymous likes | Trash this title? <%= link_to bookmark_path(bookmark.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+    <i class="fa-solid fa-trash"></i>
+  <% end %></p>
+    </div>
   </div>
+
 <% end %>
-<button type="button" class="btn btn-dark"><%= link_to "＋ Bookmark", new_list_bookmark_path(@list) %></button>
+
+<%= javascript_pack_tag 'likes.js' %>

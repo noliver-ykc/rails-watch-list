@@ -5,28 +5,35 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/789041a997.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d4caf0;">
     <div class="container-fluid">
-      <p><%= link_to "Wagon Movies", lists_path, class:"navbar-brand" %></p>
+      <%= link_to lists_path, class:"navbar-brand" do %>
+        <%= image_tag("logo.png", height: '45', alt: "logo") %>
+      <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="#"><%= link_to "Home", lists_path %></a>
+        <div class="navbar-nav ">
+          <a class="nav-link active" aria-current="page"><%= link_to "Home", lists_path %></a>
           <a class="navbar-brand"><%= link_to "Add a list", new_list_path %></a>
         </div>
       </div>
     </div>
   </nav>
-    <div class="main-border">
-        <%= yield %>
-    </div>
+
+  <div class="main-border">
+      <%= yield %>
+  </div>
+  <hr>
+  <footer>
+    <small>Made with <i class="fa-solid fa-heart"></i> in Tokyo</small>
+  </footer>
   </body>
 </html>
